@@ -69,6 +69,9 @@ def bootstrap():
                     <div class="alert alert-info " role="alert">
                       Тре бьен планета
                     </div>
+                    <div class="alert alert-warning " role="alert">
+                        Сделаем плане2
+                    </div>
                   </body>
                 </html>'''
 
