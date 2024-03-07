@@ -87,11 +87,18 @@ def planet(planet_name):
 
 
 @app.route('/results/<nickname>/<level>/<rating>')
-def selection(nickname,level, rating):
-    with open("test.txt", 'w') as f:
-        f.writelines([nickname,level, rating])
+def selection(nickname, level, rating):
     return render_template('selection.html', nick=nickname, selection_stage=level, points=rating)
 
+
+@app.route('/carousel')
+def carousel():
+    image1_url = url_for('static', filename='img/image.jpg')
+    image2_url = url_for('static', filename='img/image2.jpg')
+    image3_url = url_for('static', filename='img/image3.jpg')
+    image4_url = url_for('static', filename='img/image4.jpg')
+    style = url_for('static', filename='css/style2.css')
+    return render_template('carousel.html', im1=image1_url, im2=image2_url, im3=image3_url, im4=image4_url, style=style)
 
 
 if __name__ == '__main__':
