@@ -93,7 +93,7 @@ def selection(nickname, level, rating):
 
 @app.route('/carousel')
 def carousel():
-    image1_url = url_for('static', filename='img/image.jpg')
+    image1_url = url_for('static', filename='img/image1.jpg')
     image2_url = url_for('static', filename='img/image2.jpg')
     image3_url = url_for('static', filename='img/image3.jpg')
     image4_url = url_for('static', filename='img/image4.jpg')
