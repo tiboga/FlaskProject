@@ -43,7 +43,6 @@ def image():
 
 @app.route('/promotion_image')
 def bootstrap():
-
     return f'''<!doctype html>
                 <html lang="en">
                   <head>
@@ -74,11 +73,18 @@ def bootstrap():
                     </div>
                   </body>
                 </html>'''
+
+
 @app.route('/astronaut_selection', methods=['POST', 'GET'])
 def form_sample():
     if request.method == 'GET':
         return render_template('astronaut_reg.html', data=url_for('static', filename='css/style2.css'))
 
+
+@app.route('/choice/<planet_name>')
+def planet(planet_name):
+    return render_template('planet.html', planet=planet_name)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
-
