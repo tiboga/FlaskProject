@@ -86,5 +86,13 @@ def planet(planet_name):
     return render_template('planet.html', planet=planet_name)
 
 
+@app.route('/results/<nickname>/<level>/<rating>')
+def selection(nickname,level, rating):
+    with open("test.txt", 'w') as f:
+        f.writelines([nickname,level, rating])
+    return render_template('selection.html', nick=nickname, selection_stage=level, points=rating)
+
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
