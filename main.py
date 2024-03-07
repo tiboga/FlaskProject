@@ -1,4 +1,4 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, request, render_template
 
 app = Flask(__name__)
 
@@ -74,7 +74,10 @@ def bootstrap():
                     </div>
                   </body>
                 </html>'''
-
+@app.route('/astronaut_selection', methods=['POST', 'GET'])
+def form_sample():
+    if request.method == 'GET':
+        return render_template('astronaut_reg.html', data=url_for('static', filename='css/style2.css'))
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
