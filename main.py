@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, url_for, request, render_template
 
 app = Flask(__name__)
@@ -99,6 +101,23 @@ def carousel():
     image4_url = url_for('static', filename='img/image4.jpg')
     style = url_for('static', filename='css/style2.css')
     return render_template('carousel.html', im1=image1_url, im2=image2_url, im3=image3_url, im4=image4_url, style=style)
+
+
+@app.route('/load_photo', methods=['POST', 'GET'])
+def photo_load():
+    if request.method == 'GET':
+        if os.path.exists('static/img/re.jpg'):
+            print("True")
+            return render_template('ret_file.html', href_for_style=url_for('static', filename='css/style2.css'),
+                                   href_for_img=url_for('static', filename='img/re.jpg'))
+        else:
+            print(False)
+            return render_template('download_file.html', href_for_style=url_for('static', filename='css/style2.css'))
+    elif request.method == 'POST':
+        f = request.files['file']
+        with open('static/img/re.jpg', 'wb') as wf:
+            wf.write(f.read())
+        return "Форма отправлена"
 
 
 if __name__ == '__main__':
